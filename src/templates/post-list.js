@@ -4,19 +4,21 @@ import Layout from "../components/layout"
 import { dateF, timeF } from "../../lib/date"
 
 export const query = graphql`
-  query {
+  query($id: ID!) {
     wpgraphql {
-      posts {
-        nodes {
-          id
-          title
-          uri
-          excerpt
-          date
-          tags {
-            nodes {
-              name
-              slug
+      tag(id: $id) {
+        posts {
+          nodes {
+            id
+            title
+            uri
+            excerpt
+            date
+            tags {
+              nodes {
+                name
+                slug
+              }
             }
           }
         }
@@ -25,16 +27,19 @@ export const query = graphql`
   }
 `
 
-const Blog = ({ data }) => {
-  const posts = data.wpgraphql.posts.nodes
+const BlogList = ({ data, pageContext }) => {
+  const posts = data.wpgraphql.tag.posts.nodes
 
   return (
     <Layout>
-      <h1 className="page-title">Home</h1>
+      <h1 className="page-title">Blog / {pageContext.name}</h1>
       {posts.map(post => (
         <article key={post.id} className="post">
           <h2 className="post-title">
-            <Link to={`/blog/${post.uri}`} dangerouslySetInnerHTML={{ __html: post.title }} />
+            <Link
+              to={`/blog/${post.uri}`}
+              dangerouslySetInnerHTML={{ __html: post.title }}
+            />
           </h2>
           <div className="post-meta">
             <p className="post-date">
@@ -58,4 +63,4 @@ const Blog = ({ data }) => {
   )
 }
 
-export default Blog
+export default BlogList
