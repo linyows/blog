@@ -43,8 +43,8 @@ const Layout = ({ children }) => {
     <>
       <header className="site-header">
         <p className="site-title">
-          <img src={user.avatar.url} alt={user.nickname} className="site-avatar" />
           <Link to="/" className="home">
+            <img src={user.avatar.url} alt={user.nickname} className="site-avatar" />
             {title}
           </Link>
         </p>
