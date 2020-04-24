@@ -23,7 +23,6 @@ const Layout = ({ children }) => {
         menu(id: "TWVudTo2") {
           menuItems {
             nodes {
-              id
               label
               url
             }
