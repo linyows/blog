@@ -16,14 +16,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and deploy
+    - name: npm install and build
       env:
         GATSBY_API: ${{ secrets.GATSBY_API }}
         GA_TID: ${{ secrets.GA_TID }}
       run: |
         npm i -D
         npm run build
-    - name: copy file via ssh password
+    - name: deploy by scp
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
