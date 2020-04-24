@@ -1,12 +1,15 @@
 name: Build and Deploy
-on: repository_dispatch
+on:
+  repository_dispatch:
+  push:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Run builds and deploys with ${{ matrix.node-version }}
