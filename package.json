@@ -29,7 +29,9 @@
   },
   "devDependencies": {
     "gatsby-plugin-graphql-image": "^1.0.1",
-    "prettier": "2.0.4"
+    "gatsby-plugin-react-helmet": "^3.2.5",
+    "prettier": "2.0.4",
+    "react-helmet": "^6.0.0"
   },
   "repository": {
     "type": "git",
