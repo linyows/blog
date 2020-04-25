@@ -1,9 +1,9 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import { nowY } from "../../lib/date"
 import "normalize.css"
 import "@wordpress/block-library/build-style/style.css"
-import "../styles/layout.css"
-import { nowY } from "../../lib/date"
+import "./layout.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
