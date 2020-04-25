@@ -68,7 +68,8 @@ const Layout = ({ children }) => {
 
       <main className="site-main">{children}</main>
       <footer className="site-footer">
-        Copyright © {nowY()} {title}. All rights reserved.
+        Copyright &copy; {nowY()} {title}. All rights reserved.<br/>
+        Built with <a href="https://www.gatsbyjs.org/">Gatsby</a>.
         Designed by <a href="https://github.com/linyows/gatsby-starter-wpgraphql">linyows.</a>
       </footer>
     </>
