@@ -12,11 +12,12 @@ function SEO({ description, lang, meta, title }) {
           url
           description
         }
-        user(id: "dXNlcjox") {
-          nickname
-          description
-          avatar {
-            url
+        users {
+          nodes {
+            slug
+            avatar {
+              url
+            }
           }
         }
       }
@@ -24,7 +25,7 @@ function SEO({ description, lang, meta, title }) {
   `)
 
   const metaTitle = title || data.wpgraphql.generalSettings.title
-  const metaDesc = description || data.wpgraphql.generalSettings.description
+  const metaDesc = description || data.wpgraphql.generalSettings.description || metaTitle
 
   return (
     <Helmet
@@ -62,7 +63,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: data.wpgraphql.user.nickname,
+          content: data.wpgraphql.users.nodes[0].slug,
         },
         {
           name: `twitter:title`,
