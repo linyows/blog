@@ -73,6 +73,7 @@ const Layout = ({ children }) => {
         Copyright &copy; {nowY()} {title}. All rights reserved.<br/>
         Designed by <a href="https://github.com/linyows/gatsby-starter-wpgraphql">linyows.</a>
       </footer>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&family=Noto+Serif+JP:wght@900&display=swap" />
     </>
   )
 }

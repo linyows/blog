@@ -71,12 +71,6 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
-      <script type="application/javascript">{`
-          const link = document.createElement('link')
-          link.rel = 'stylesheet'
-          link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&family=Noto+Serif+JP:wght@900&display=swap'
-          document.body.appendChild(link)
-      `}</script>
     </Helmet>
   )
 }
