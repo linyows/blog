@@ -33,6 +33,12 @@ function SEO({ description, lang, meta, title }) {
       }}
       title={metaTitle}
       titleTemplate={title ? `%s - ${data.wpgraphql.generalSettings.title}` : '%s'}
+      link={[
+        {
+          rel: `stylesheet`,
+          href: `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&family=Noto+Serif+JP:wght@900&display=swap`,
+        },
+      ]}
       meta={[
         {
           name: `description`,

@@ -20,16 +20,6 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Noto+Sans+JP:300,900`,
-          `Noto+Serif+JP`
-        ],
-        display: 'swap'
-      }
-    },
-    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: `${process.env.GA_TID}`
