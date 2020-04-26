@@ -22,11 +22,13 @@ const Layout = ({ children }) => {
             }
           }
         }
-        menu(id: "TWVudTo2") {
-          menuItems {
-            nodes {
-              label
-              url
+        menus {
+          nodes {
+            menuItems {
+              nodes {
+                label
+                url
+              }
             }
           }
         }
@@ -36,10 +38,10 @@ const Layout = ({ children }) => {
 
   const { title, url, description } = data.wpgraphql.generalSettings
   const user = data.wpgraphql.users.nodes[0]
-  const items = data.wpgraphql.menu.menuItems.nodes.map(item => ({
+  const items = (data.wpgraphql.menus.nodes.length > 0) ? data.wpgraphql.menus.nodes[0].menuItems.nodes.map(item => ({
     ...item,
     url: item.url.replace(url, ""),
-  }))
+  })) : []
 
   return (
     <>
