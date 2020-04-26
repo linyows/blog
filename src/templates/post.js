@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from '../components/layout';
-import SEO from "../components/seo"
+import Head from "../components/head"
 import { dateF, timeF } from "../../lib/date"
 
 export const query = graphql`
@@ -27,7 +27,7 @@ const PostTemplate = ({ data }) => {
   const post = data.wpgraphql.post
   return (
     <Layout>
-      <SEO title={post.title} description={post.excerpt} />
+      <Head title={post.title} description={post.excerpt} />
       <div className="entry">
         <p className="page-title">Blog</p>
         <h1 className="post-title" dangerouslySetInnerHTML={{ __html: post.title }} />

@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import SEO from "../components/seo"
+import Head from "../components/head"
 import Layout from "../components/layout"
 import { dateF, timeF } from "../../lib/date"
 
@@ -33,7 +33,7 @@ const BlogList = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO title={pageContext.name} />
+      <Head title={pageContext.name} />
       <h1 className="page-title">Blog / {pageContext.name}</h1>
       {posts.map(post => (
         <article key={post.id} className="post">
