@@ -148,7 +148,7 @@ a:hover {
 @media (prefers-color-scheme: dark) {
   html,
   body {
-    background-color: #000;
+    background-color: #333;
     color: #FFF;
   }
   a {
@@ -162,14 +162,14 @@ a:hover {
   }
   .page-content a,
   .post-content a {
-    border-bottom-color: #000;
+    border-bottom-color: #fff;
   }
 }
 
 @media (max-width: 480px) {
   html,
   body {
-    font-size: .85em;
+    font-size: 1em;
   }
   h1, h2, h3, h4, h5, p {
     padding-right: 0;
@@ -182,7 +182,11 @@ a:hover {
   }
   .site-avatar {
     margin-right: .8em;
-    margin-bottom: -.7em;
+    margin-bottom: .5em;
+    display: block;
+  }
+  .post-title {
+    letter-spacing: -.02em;
   }
   .post-meta {
     padding-top: .5em;
