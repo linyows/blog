@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "gatsby-starter-wpgraphql",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "A agatsby starter for WPGraphQL",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -17,29 +17,28 @@
     "@wordpress/block-library": "^2.16.1",
     "gatsby": "^2.20.25",
     "gatsby-plugin-google-analytics": "^2.2.4",
-    "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-nprogress": "^2.2.3",
-    "gatsby-plugin-sharp": "^2.5.6",
-    "gatsby-source-filesystem": "^2.2.4",
-    "gatsby-source-graphql": "^2.4.2",
-    "gatsby-transformer-sharp": "^2.4.6",
+    "gatsby-plugin-manifest": "^2.3.7",
+    "gatsby-plugin-offline": "^3.1.5",
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "gatsby-plugin-graphql-image": "^1.0.1",
-    "gatsby-plugin-manifest": "^2.3.7",
-    "gatsby-plugin-offline": "^3.1.5",
+    "gatsby-plugin-sharp": "^2.5.6",
+    "gatsby-source-filesystem": "^2.2.4",
+    "gatsby-source-graphql": "^2.4.2",
+    "gatsby-transformer-sharp": "^2.4.6",
+    "gatsby-image": "^2.3.5",
     "gatsby-plugin-react-helmet": "^3.2.5",
     "prettier": "2.0.4",
     "react-helmet": "^6.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/linyows/gatsby-starter-wpgraphql"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/linyows/gatsby-starter-wpgraphql/issues"
   }
 }
