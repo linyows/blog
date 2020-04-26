@@ -24,8 +24,11 @@ function SEO({ description, lang, meta, title }) {
     }
   `)
 
-  const metaTitle = title || data.wpgraphql.generalSettings.title
-  const metaDesc = description || data.wpgraphql.generalSettings.description || metaTitle
+  const siteTitle = data.wpgraphql.generalSettings.title
+  const siteDesc = data.wpgraphql.generalSettings.description
+  const siteAuthor = data.wpgraphql.users.nodes[0].slug
+  const metaDesc = description || siteDesc || siteTitle
+  const metaTitle = title ? `${title} - ${siteTitle}` : `${siteTitle}`
 
   return (
     <Helmet
@@ -33,13 +36,6 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={metaTitle}
-      titleTemplate={title ? `%s - ${data.wpgraphql.generalSettings.title}` : '%s'}
-      link={[
-        {
-          rel: `stylesheet`,
-          href: `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&family=Noto+Serif+JP:wght@900&display=swap`,
-        },
-      ]}
       meta={[
         {
           name: `description`,
@@ -63,7 +59,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: data.wpgraphql.users.nodes[0].slug,
+          content: siteAuthor,
         },
         {
           name: `twitter:title`,
@@ -74,7 +70,14 @@ function SEO({ description, lang, meta, title }) {
           content: metaDesc,
         },
       ].concat(meta)}
-    />
+    >
+      <script type="application/javascript">{`
+          const link = document.createElement('link')
+          link.rel = 'stylesheet'
+          link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&family=Noto+Serif+JP:wght@900&display=swap'
+          document.body.appendChild(link)
+      `}</script>
+    </Helmet>
   )
 }
 
