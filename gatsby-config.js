@@ -40,7 +40,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#333`,
         theme_color: `#333`,
-        display: `minimal-ui`,
+        display: `standalone`,
         // https://favicon.io/favicon-generator/
         // Background: Rounded, Font: Gio, Size: 110
         icon: `static/apple-touch-icon.png`, // This path is relative to the root of the site.
