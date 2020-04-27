@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Layout from '../components/layout';
+import Layout from "../components/layout"
 import Head from "../components/head"
 import { dateF, timeF } from "../../lib/date"
 import { PostQuery } from "../../types/graphql-types"
@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const query = graphql`
-  query Post ($id: ID!) {
+  query Post($id: ID!) {
     wpgraphql {
       post(id: $id) {
         title
@@ -35,7 +35,10 @@ const Component: React.FC<Props> = ({ data }) => {
       <Head title={post.title} description={post.excerpt} />
       <div className="entry">
         <p className="page-title">Blog</p>
-        <h1 className="post-title" dangerouslySetInnerHTML={{ __html: post.title }} />
+        <h1
+          className="post-title"
+          dangerouslySetInnerHTML={{ __html: post.title }}
+        />
         <div className="post-meta">
           <p className="post-date">
             {dateF(post.date)}
@@ -51,7 +54,10 @@ const Component: React.FC<Props> = ({ data }) => {
             ))}
           </ul>
         </div>
-        <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div
+          className="post-content"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
       </div>
     </Layout>
   )

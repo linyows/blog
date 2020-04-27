@@ -9,6 +9,6 @@ const NotFound = () => (
     <p>Sorry, Page not found.</p>
     <p class="error-status">404</p>
   </Layout>
-);
+)
 
-export default NotFound;
+export default NotFound

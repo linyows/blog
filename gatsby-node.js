@@ -7,13 +7,13 @@ exports.createPages = async ({ actions, graphql }) => {
             id
             uri
           }
-        },
+        }
         posts {
           nodes {
             id
             uri
           }
-        },
+        }
         tags {
           nodes {
             id

@@ -11,7 +11,7 @@ type Meta = {
 }
 
 const defaultProps = {
-  meta: []
+  meta: [],
 }
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
   meta?: Meta[]
 } & typeof defaultProps
 
-const Component: React.FC<Props> = ({ title, description, lang, meta  }) => {
+const Component: React.FC<Props> = ({ title, description, lang, meta }) => {
   const data = useStaticQuery<HeadQuery>(graphql`
     query Head {
       wpgraphql {
@@ -87,8 +87,7 @@ const Component: React.FC<Props> = ({ title, description, lang, meta  }) => {
           content: headDesc,
         },
       ].concat(headMeta)}
-    >
-    </Helmet>
+    ></Helmet>
   )
 }
 

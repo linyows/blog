@@ -41,7 +41,10 @@ const Blog: React.FC<Props> = ({ data }) => {
       {posts.map(post => (
         <article key={post.id} className="post">
           <h2 className="post-title">
-            <Link to={`/blog/${post.uri}`} dangerouslySetInnerHTML={{ __html: post.title }} />
+            <Link
+              to={`/blog/${post.uri}`}
+              dangerouslySetInnerHTML={{ __html: post.title }}
+            />
           </h2>
           <div className="post-meta">
             <p className="post-date">
@@ -58,7 +61,10 @@ const Blog: React.FC<Props> = ({ data }) => {
               ))}
             </ul>
           </div>
-          <div className="post-excerpt" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+          <div
+            className="post-excerpt"
+            dangerouslySetInnerHTML={{ __html: post.excerpt }}
+          />
         </article>
       ))}
     </Layout>

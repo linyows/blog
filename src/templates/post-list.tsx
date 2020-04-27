@@ -16,7 +16,7 @@ type Props = {
 }
 
 export const query = graphql`
-  query PostList ($id: ID!) {
+  query PostList($id: ID!) {
     wpgraphql {
       tag(id: $id) {
         posts {
@@ -69,7 +69,10 @@ const Component: React.FC<Props> = ({ data, pageContext }) => {
               ))}
             </ul>
           </div>
-          <div className="post-excerpt" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+          <div
+            className="post-excerpt"
+            dangerouslySetInnerHTML={{ __html: post.excerpt }}
+          />
         </article>
       ))}
     </Layout>

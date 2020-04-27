@@ -6,7 +6,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
     {
-      resolve: 'gatsby-plugin-graphql-codegen',
+      resolve: "gatsby-plugin-graphql-codegen",
       options: {
         fileName: `types/graphql-types.d.ts`,
       },
@@ -24,13 +24,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
-      }
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `${process.env.GA_TID}`
-      }
+        trackingId: `${process.env.GA_TID}`,
+      },
     },
     {
       resolve: `gatsby-plugin-nprogress`,
