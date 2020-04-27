@@ -1,9 +1,16 @@
 module.exports = {
   plugins: [
+    `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-plugin-graphql-codegen",
+      options: {
+        fileName: `types/graphql-types.d.ts`,
+      },
+    },
     {
       resolve: "gatsby-source-graphql",
       options: {
@@ -17,13 +24,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
-      }
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `${process.env.GA_TID}`
-      }
+        trackingId: `${process.env.GA_TID}`,
+      },
     },
     {
       resolve: `gatsby-plugin-nprogress`,
