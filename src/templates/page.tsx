@@ -19,7 +19,7 @@ export const pageQuery = graphql`
   }
 `
 
-const Component = ({ data }) => {
+const Component: React.FC<Props> = ({ data }) => {
   const page = data.wpgraphql.page
   return (
     <Layout>
