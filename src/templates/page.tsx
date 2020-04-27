@@ -2,9 +2,14 @@ import React from "react"
 import { graphql } from "gatsby"
 import Head from "../components/head"
 import Layout from '../components/layout';
+import { PageQuery } from "../../types/graphql-types"
 
-export const query = graphql`
-  query($id: ID!) {
+type Props = {
+  data: PageQuery
+}
+
+export const pageQuery = graphql`
+  query Page ($id: ID!) {
     wpgraphql {
       page(id: $id) {
         title
@@ -14,7 +19,7 @@ export const query = graphql`
   }
 `
 
-const PageTemplate = ({ data }) => {
+const Component = ({ data }) => {
   const page = data.wpgraphql.page
   return (
     <Layout>
@@ -25,8 +30,8 @@ const PageTemplate = ({ data }) => {
   )
 }
 
-// const PageTemplate = props => {
+// const Component = props => {
 //   return <pre>{JSON.stringify(props, null, 2)}</pre>
 // }
 
-export default PageTemplate
+export default Component

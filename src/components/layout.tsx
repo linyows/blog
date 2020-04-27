@@ -1,13 +1,14 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { nowY } from "../../lib/date"
+import { LayoutQuery } from "../../types/graphql-types"
 import "normalize.css"
 import "@wordpress/block-library/build-style/style.css"
 import "./layout.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
+const Component: React.FC = ({ children }) => {
+  const data = useStaticQuery<LayoutQuery>(graphql`
+    query Layout {
       wpgraphql {
         generalSettings {
           title
@@ -80,4 +81,4 @@ const Layout = ({ children }) => {
   )
 }
 
-export default Layout
+export default Component

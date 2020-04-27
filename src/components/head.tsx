@@ -2,52 +2,69 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { HeadQuery } from "../../types/graphql-types"
 
-function Head({ description, lang, meta, title }) {
-  const data = useStaticQuery(graphql`
-    query {
+type Meta = {
+  name?: string
+  property?: string
+  content: string
+}
+
+const defaultProps = {
+  meta: []
+}
+
+type Props = {
+  title?: string
+  description?: string
+  lang?: string
+  meta?: Meta[]
+} & typeof defaultProps
+
+const Component: React.FC<Props> = ({ title, description, lang, meta  }) => {
+  const data = useStaticQuery<HeadQuery>(graphql`
+    query Head {
       wpgraphql {
         generalSettings {
           title
-          url
           description
+          language
         }
         users {
           nodes {
             slug
-            avatar {
-              url
-            }
           }
         }
       }
     }
   `)
 
-  const siteTitle = data.wpgraphql.generalSettings.title
-  const siteDesc = data.wpgraphql.generalSettings.description
-  const siteAuthor = data.wpgraphql.users.nodes[0].slug
-  const metaDesc = description || siteDesc || siteTitle
-  const metaTitle = title ? `${title} - ${siteTitle}` : `${siteTitle}`
+  const settings = data.wpgraphql.generalSettings
+  const user = data.wpgraphql.users.nodes[0].slug
+
+  const headDesc = description || settings.description || settings.title
+  const headTitle = title ? `${title} - ${settings.title}` : `${settings.title}`
+  const headLang = lang || settings.language || `en`
+  const headMeta = meta
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        headLang,
       }}
-      title={metaTitle}
+      title={headTitle}
       meta={[
         {
           name: `description`,
-          content: metaDesc,
+          content: headDesc,
         },
         {
           property: `og:title`,
-          content: metaTitle,
+          content: headTitle,
         },
         {
           property: `og:description`,
-          content: metaDesc,
+          content: headDesc,
         },
         {
           property: `og:type`,
@@ -59,34 +76,22 @@ function Head({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: siteAuthor,
+          content: user,
         },
         {
           name: `twitter:title`,
-          content: metaTitle,
+          content: headTitle,
         },
         {
           name: `twitter:description`,
-          content: metaDesc,
+          content: headDesc,
         },
-      ].concat(meta)}
+      ].concat(headMeta)}
     >
     </Helmet>
   )
 }
 
-Head.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
+Component.defaultProps = defaultProps
 
-Head.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string,
-  //title: PropTypes.string.isRequired,
-}
-
-export default Head
+export default Component

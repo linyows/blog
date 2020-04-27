@@ -3,9 +3,14 @@ import { Link, graphql } from "gatsby"
 import Layout from '../components/layout';
 import Head from "../components/head"
 import { dateF, timeF } from "../../lib/date"
+import { PostQuery } from "../../types/graphql-types"
+
+type Props = {
+  data: PostQuery
+}
 
 export const query = graphql`
-  query($id: ID!) {
+  query Post ($id: ID!) {
     wpgraphql {
       post(id: $id) {
         title
@@ -23,7 +28,7 @@ export const query = graphql`
   }
 `
 
-const PostTemplate = ({ data }) => {
+const Component: React.FC<Props> = ({ data }) => {
   const post = data.wpgraphql.post
   return (
     <Layout>
@@ -52,4 +57,4 @@ const PostTemplate = ({ data }) => {
   )
 }
 
-export default PostTemplate
+export default Component

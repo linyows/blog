@@ -3,9 +3,14 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Head from "../components/head"
 import { dateF, timeF } from "../../lib/date"
+import { IndexPageQuery } from "../../types/graphql-types"
+
+type Props = {
+  data: IndexPageQuery
+}
 
 export const query = graphql`
-  query {
+  query IndexPage {
     wpgraphql {
       posts {
         nodes {
@@ -26,7 +31,7 @@ export const query = graphql`
   }
 `
 
-const Blog = ({ data }) => {
+const Blog: React.FC<Props> = ({ data }) => {
   const posts = data.wpgraphql.posts.nodes
 
   return (

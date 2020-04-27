@@ -3,9 +3,20 @@ import { graphql, Link } from "gatsby"
 import Head from "../components/head"
 import Layout from "../components/layout"
 import { dateF, timeF } from "../../lib/date"
+import { PostListQuery } from "../../types/graphql-types"
+
+type PostListContext = {
+  id: string
+  name: string
+}
+
+type Props = {
+  data: PostListQuery
+  pageContext: PostListContext
+}
 
 export const query = graphql`
-  query($id: ID!) {
+  query PostList ($id: ID!) {
     wpgraphql {
       tag(id: $id) {
         posts {
@@ -28,7 +39,7 @@ export const query = graphql`
   }
 `
 
-const BlogList = ({ data, pageContext }) => {
+const Component: React.FC<Props> = ({ data, pageContext }) => {
   const posts = data.wpgraphql.tag.posts.nodes
 
   return (
@@ -65,4 +76,4 @@ const BlogList = ({ data, pageContext }) => {
   )
 }
 
-export default BlogList
+export default Component
