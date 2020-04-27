@@ -9,16 +9,17 @@ type Meta = {
   content: string
 }
 
-const defaultProps = {
-  meta: [],
-}
+// const defaultProps = {
+//   meta: [],
+// }
 
 type Props = {
   title?: string
   description?: string
   lang?: string
   meta?: Meta[]
-} & typeof defaultProps
+}
+//} & typeof defaultProps
 
 const Component: React.FC<Props> = ({ title, description, lang, meta }) => {
   const data = useStaticQuery<HeadQuery>(graphql`
@@ -39,12 +40,12 @@ const Component: React.FC<Props> = ({ title, description, lang, meta }) => {
   `)
 
   const settings = data.wpgraphql.generalSettings
-  const user = data.wpgraphql.users.nodes[0].slug
+  const user = data?.wpgraphql?.users?.nodes[0]?.slug || `gatsby`
 
   const headDesc = description || settings.description || settings.title
   const headTitle = title ? `${title} - ${settings.title}` : `${settings.title}`
   const headLang = lang || settings.language || `en`
-  const headMeta = meta
+  const headMeta = meta || []
 
   return (
     <Helmet
@@ -90,6 +91,6 @@ const Component: React.FC<Props> = ({ title, description, lang, meta }) => {
   )
 }
 
-Component.defaultProps = defaultProps
+// Component.defaultProps = defaultProps
 
 export default Component
